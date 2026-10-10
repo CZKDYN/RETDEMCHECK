@@ -56,6 +56,7 @@ type Page =
   | 'Resources'
   | 'About';
 type Modal = 'settings' | 'help' | 'notifications' | null;
+const assetUrl = (filename: string) => `${import.meta.env.BASE_URL}${filename}`;
 const navigation: { title: Page; icon: LucideIcon }[] = [
   { title: 'Dashboard', icon: Home },
   { title: 'Procedures', icon: ClipboardList },
@@ -432,7 +433,7 @@ export default function App() {
         <div className="sidebar-bottom">
           <div className="profile">
             <div className="avatar">
-              <img src="/nurse.svg" alt="" />
+              <img src={assetUrl('nurse.svg')} alt="" />
             </div>
             <div>
               <strong>Hello, {progress.name}!</strong>
@@ -643,11 +644,11 @@ export default function App() {
                       <div className="patient-card">
                         <div className="patient-image">
                           <img
-                            src={
+                            src={assetUrl(
                               activeId === 'ngt'
-                                ? '/patient.svg'
-                                : '/patient-care.svg'
-                            }
+                                ? 'patient.svg'
+                                : 'patient-care.svg',
+                            )}
                             alt="Illustration of a simulated adult patient resting in a hospital bed"
                           />
                           <span className="patient-image-tag">
@@ -828,7 +829,7 @@ export default function App() {
                         )}
                       </p>
                       <div className="feedback-nurse">
-                        <img src="/nurse.svg" alt="" />
+                        <img src={assetUrl('nurse.svg')} alt="" />
                         <span>
                           <Sparkles size={13} /> You’ve got this!
                         </span>

@@ -45,10 +45,25 @@ The browser tests cover correct and incorrect answers, all three completed proce
 
 ## Put it online
 
+### GitHub Pages
+
+The compiled website is prepared on the repository's `gh-pages` branch. Enable it on GitHub:
+
+1. Open the repository's **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch** as the source.
+3. Choose the **gh-pages** branch and **/ (root)** folder, then click **Save**.
+4. Wait for GitHub's Pages deployment to finish. The Pages screen will show the live website link.
+
+After activation, the expected address is `https://czkdyn.github.io/RETDEMCHECK/`. This is separate from the repository's code page.
+
+To generate an updated GitHub Pages build, run `npm run build:pages`. The output is in `dist-pages/`, with asset URLs configured for `/RETDEMCHECK/`. Publish the contents of that directory to the `gh-pages` branch and include an empty `.nojekyll` file at its root. Updating source files on `main` alone does not update this manual branch deployment.
+
+### Other static hosts
+
 ```sh
 npm run build
 ```
 
-Deploy the generated `dist/` directory to a static host such as Netlify or Vercel. Use `npm run build` as the build command and `dist` as the output directory. This configuration assumes the site is hosted at the domain root. No server-side secrets are needed. Deployment has not been performed automatically.
+Deploy the generated `dist/` directory to a static host such as Netlify or Vercel. Use `npm run build` as the build command and `dist` as the output directory. This build assumes the site is hosted at the domain root. No server-side secrets are needed.
 
 For shared student accounts, cloud progress, or an actual class leaderboard, add a backend with authentication and a database in a separate development step.
